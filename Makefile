@@ -13,10 +13,10 @@ xlreader: main.o $(OBJ) $(HDR)
 	$(CC) $(LDFLAGS) main.o $(OBJ) -o $@
 
 clean:
-	rm -f *.o xlsreader
+	rm -f *.o xlreader
 
 dist-clean:
-	rm -f *.o xlsreader core *.core tester
+	rm -f *.o xlreader core *.core tester
 
 install:
 	install -m 755 xlreader /usr/local/bin
