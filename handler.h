@@ -52,9 +52,8 @@ struct mulrk {
         int first;
         int last;
         int numrks;
-        int *rknumbers;
-	double *rkdbls;
-        int *xfindices;
+	double rkdbls[1024];
+        int xfindices[1024];
 };
   
 

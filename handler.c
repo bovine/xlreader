@@ -45,7 +45,6 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <strings.h>
 #include "biff.h"
 #include "cell.h"
@@ -80,8 +79,10 @@ handle_mulrk(book *book, sheet *sheet, record *record) {
 		cell = cell_number(mulrk.row, mulrk.first + i, mulrk.xfindices[i], mulrk.rkdbls[i]);
 		sheet->cells[mulrk.row][mulrk.first + i] = cell;
 	}
+	/*
 	free(mulrk.xfindices);
 	free(mulrk.rkdbls);
+	*/
 }
 
 void
@@ -90,8 +91,10 @@ mulrk_read(struct mulrk *mulrk, char *data) {
 	int i;
 	int pos;
 	pos = 4;
-	mulrk->xfindices = mymalloc(mulrk->numrks);
-	mulrk->rkdbls    = mymalloc(mulrk->numrks);
+	/*
+	mulrk->xfindices = mymalloc(sizeof(*mulrk->xfindices) * mulrk->numrks);
+	mulrk->rkdbls    = mymalloc(sizeof(*mulrk->rkdbls) * mulrk->numrks);
+	*/
 	for (i = 0; i < mulrk->numrks; i++) {
 		mulrk->xfindices[i] = interger2byte(data[pos], data[pos+1]);
 		double4byte(&d,data[pos+2], data[pos+3], data[pos+4], data[pos+5]);
