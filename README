@@ -1,0 +1,18 @@
+
+INTRODUCTION
+Read data from Excel spread sheets without Microsoft!
+Provides an API to allow any application to read Excel
+documents. Demo interface converts data to tab
+delimited, CSV or SQL inserts. Written in C. Based on
+the the Java version by Andrew Khan.
+
+INSTALL NOTES
+Will install to /usr/local/bin. Uses gcc for compiling
+you will have to edit the Makefile to use cc. I Have 
+tested xlreader on FreeBSD 4.0 and Solaris 8.
+
+	type: make
+	      make install
+
+HELP
+Visit the web site at: http://www.giffin.org/xlreader.php
