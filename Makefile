@@ -22,7 +22,7 @@ install:
 	install -m 755 xlreader /usr/local/bin
 
 test: xlreader
-	./xlreader --sql xlfiles/*
+	./xlreader --sql xlfiles/*.xls
 
 .SUFFIXES: .o .lo .mo $(HDR)
 .c.o: $(HDR)
