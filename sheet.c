@@ -93,6 +93,12 @@ sheet_read(book *book, sheet *sheet) {
 
 	while ((record = record_get(book)) != NULL) {
 		if (!sheet_handle_record(book, sheet, record)) break;
+		if (record->data != NULL) {
+			free(record->data);
+			record->data = NULL;
+		}
+		free(record);
+		record = NULL;
 	}
 	book_position(book, oldpos);
 	return 1;

@@ -223,6 +223,10 @@ book_close(book *bk) {
 		free(bk->xfrecords[i]);
 		bk->xfrecords[i] = NULL;
 	}
+	for (i = 0; i < bk->namecount; i++) {
+		free(bk->names[i]);
+		bk->names[i] = NULL;
+	}
 	for (i = 0; i < bk->sheetcount; i++) {
 		free(bk->sheet[i]);
 		bk->sheet[i] = NULL;
@@ -234,6 +238,7 @@ book_close(book *bk) {
 	free(bk->sharedstrings);
 	bk->sharedstrings = NULL;
 	fclose(bk->file);
+	bk->file = NULL;
 	free(bk);
 	bk = NULL;
 }
