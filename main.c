@@ -46,6 +46,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "biff.h"
 #include "book.h"
 #include "format.h"
