@@ -80,7 +80,7 @@ mymalloc(size_t s) {
 	alloced += s;
 	t = malloc(s);
 	if (t == NULL) {
-		printf("Error malloc failed! Mallocing %d bytes\n",s);
+		printf("Error malloc failed! Mallocing %d bytes\n",(int)s);
 		exit(1);
 	}
 	return (void *)t;
