@@ -96,7 +96,7 @@ cell_data_string(book *book, sheet *sh, int row, int col) {
 	time_t date;
 	struct tm *tmptr;
 	cell *c;
-	char *str;
+	char *str = NULL;
 	char *format;
 	int precision;
 	int utcOffsetDays = 25569;
@@ -120,19 +120,19 @@ cell_data_string(book *book, sheet *sh, int row, int col) {
 				date = (time_t) ((c->value.d - utcOffsetDays) * sInADay);
 				tmptr = gmtime(&date);
 				if (dateformat) {
-					strftime(str,1024,dateformat,tmptr);
+					strftime(str,50,dateformat,tmptr);
 				} else {
-					strftime(str,1024,format,tmptr);
+					strftime(str,50,format,tmptr);
 				}
 			} else if (book->xfrecords[c->xfindex] != NULL &&
 				book->xfrecords[c->xfindex]->type == NUMBERFORMAT) {
 
 				format = (char *) book->xfrecords[c->xfindex]->format;
 				// printf("format is: %s\n",format);
-				sprintf(str,format,c->value.d);
+				snprintf(str,50,format,c->value.d);
 			} else {
 				precision = cell_getprecision(c->value.d);
-				sprintf(str,"%.*f",precision,c->value.d);
+				snprintf(str,50,"%.*f",precision,c->value.d);
 			}
 			break;
 
